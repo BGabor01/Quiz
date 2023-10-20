@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import Gapps.quiz.DTO.QuestionDto;
-import Gapps.quiz.DTO.ResponseDto;
 import Gapps.quiz.models.QuestionModel;
 import Gapps.quiz.services.QuestionService;
 import jakarta.validation.Valid;
@@ -28,7 +27,7 @@ public class QestionController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> getQuestion(@PathVariable Long id) {
-        Optional<ResponseDto> question = questionService.getQuestion(id);
+        Optional<QuestionDto> question = questionService.getQuestion(id);
 
         return question.<ResponseEntity<Object>>map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.status(404).body("Not found"));
