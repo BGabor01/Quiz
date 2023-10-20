@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import Gapps.quiz.DTO.QuestionDto;
-import Gapps.quiz.DTO.ResponseDto;
+
 import Gapps.quiz.mappers.QuestionMapper;
 import Gapps.quiz.mappers.QuestionModelToDtoMapper;
 import Gapps.quiz.models.QuestionModel;
@@ -28,7 +28,7 @@ public class QuestionService {
         this.questionModelToDtoMapper = questionModelToDtoMapper;
     }
 
-    public Optional<ResponseDto> getQuestion(Long id) {
+    public Optional<QuestionDto> getQuestion(Long id) {
         return questionRepo.findById(id)
                 .map(questionModelToDtoMapper::questionModelToQuestionDto);
     }
